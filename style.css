@@ -1,10 +1,30 @@
-.container {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-  }
+/* Applies background to the body */
+body {
+  background-image: url('https://img.freepik.com/free-vector/creative-geometric-design-space_53876-89787.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  margin: 0;
+}
 
-  .outer-box {
-    background-color: #dee2e6;
-  }
+/* Ensures the container inherits the background image from the body */
+.container {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: none; /* No background color */
+}
+
+/* Customizes the project box */
+.outer-box {
+  background-color: rgba(255, 255, 255, 0.8); /* Slight transparency */
+}
+
+/* Image styling */
+.outer-box img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
