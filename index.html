@@ -3,150 +3,330 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
+    <title>Siddhanta Shrestha</title>
+
     <link rel="stylesheet" href="style.css" />
 
-    <title>Document</title>
+    <!-- Boxicons css link -->
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Siddhanta</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div
-            class="collapse navbar-collapse justify-content-end mx-4"
-            id="navbarNavAltMarkup"
-          >
-            <div class="navbar-nav">
-              <a class="nav-link active px-3" aria-current="page" href="#"
-                >Home</a
-              >
-              <a class="nav-link px-3" href="#">About</a>
-              <a class="nav-link px-3" href="#">Resume</a>
-              <a class="nav-link px-3" href="#">Services</a>
-              <a class="nav-link px-3" href="#">Pricing</a>
-              <a class="nav-link px-3" href="#">Contact</a>
+    <!-- Navbar -->
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="active">
+          <i class="bx bx-home-alt"></i>
+          <span class="tooltip">Home</span>
+        </li>
+        <li>
+          <i class="bx bx-user"></i>
+          <span class="tooltip">About</span>
+        </li>
+        <li>
+          <i class="bx bx-file-detail"></i>
+          <span class="tooltip">Resume</span>
+        </li>
+        <li>
+          <i class="bx bx-briefcase-alt-2"></i>
+          <span class="tooltip">Portfolio</span>
+        </li>
+        <li>
+          <i class="bx bx-envelope"></i>
+          <span class="tooltip">Contact</span>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <div class="box">
+        <!-- Home -->
+        <section class="section home">
+          <div class="home-info">
+            <h3>Hello I'm</h3>
+            <h1>Siddhanta Shrestha</h1>
+            <h3>Full Stack Developer</h3>
+            <p class="desc">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Accusamus ipsum deleniti nisi qui, iusto quod tenetur, perferendis
+              aspernatur suscipit cupiditate assumenda cum unde minus.
+              Perferendis!
+            </p>
+            <div class="btn-sci">
+              <a href="#" class="btn">Download CV</a>
+              <div class="sci">
+                <a href="#">
+                  <i class="bxl bx-github"></i>
+                  <span class="tooltip">Github</span>
+                </a>
+                <a href="#">
+                  <i class="bxl bx-linkedin"></i>
+                  <span class="tooltip">LinkedIn</span>
+                </a>
+                <a href="#">
+                  <i class="bxl bx-twitter"></i>
+                  <span class="tooltip">Twitter</span>
+                </a>
+                <a href="#">
+                  <i class="bxl bx-facebook"></i>
+                  <span class="tooltip">Facebook</span>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
 
-    <!-- Hero -->
-    <div
-      class="p-5 text-center bg-image background-position-center justify-content-center"
-      style="
-        background-image: url('https://img.freepik.com/free-vector/creative-geometric-design-space_53876-89787.jpg');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        position: relative;
-      "
-    >
-      <div
-        class="mask"
-        style="
-          background-color: transparent;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-        "
-      >
-        <div class="d-flex align-items-center h-100">
-          <div class="text-white">
-            <h1 class="mb-3">Checking deploy Shrestha</h1>
-            <h4 class="mb-3">Web developer</h4>
+          <div class="img-wrapper">
+            <div class="img-box home-img">
+              <img src="images/me.png" alt="Siddhanta Shrestha" />
+            </div>
           </div>
-        </div>
+        </section>
+
+        <!-- about section -->
+        <section class="section about">
+          <div class="img-wrapper">
+            <div class="img-box about-img">
+              <img src="images/me.png" alt="Siddhanta Shrestha" />
+            </div>
+          </div>
+
+          <div class="about-info">
+            <h2 class="title">About Me</h2>
+            <h3>Full Stack Developer!</h3>
+            <p class="desc">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
+              ipsum! Voluptates aspernatur dolorem aut cumque repellat eos
+              voluptate inventore dolor ullam repellendus nemo neque provident
+              hic odit mollitia, itaque perferendis minima id similique
+              accusamus ratione? Accusamus ipsam placeat numquam unde quod
+              sapiente delectus quos a harum obcaecati non, quisquam dolores.
+            </p>
+            <a href="#" class="btn">View More</a>
+          </div>
+        </section>
+
+        <!-- resume -->
+        <section class="section resume">
+          <h2 class="title">Resume</h2>
+          <div class="tab-box">
+            <div class="tab-list resume-list active">
+              <h3>Experience</h3>
+            </div>
+            <div class="tab-list resume-list">
+              <h3>Skills</h3>
+            </div>
+            <div class="tab-list resume-list">
+              <h3>Education & Training</h3>
+            </div>
+          </div>
+          <div class="tab-wrapper">
+            <div class="tab-grid resume-box experience active">
+              <div class="tab-item resume-item">
+                <h4>June, 2025 - Present</h4>
+                <h4>Junior Full Stack Developer</h4>
+                <h4>Recruit Nepal</h4>
+                <p>
+                  <li>
+                    Designed and developed responsive frontend interfaces using
+                    React and Tailwind CSS.
+                  </li>
+                  <li>
+                    Integrated RESTful backend APIs and implemented user-facing
+                    features across full-stack.
+                  </li>
+                  <li>
+                    Assisted with basic deployment tasks including hosting,
+                    domain setup, and configuration.
+                  </li>
+                </p>
+              </div>
+              <div class="tab-item resume-item">
+                <h4>Aug, 2024 - Jan, 2025</h4>
+                <h4>Project Management and Tech Support Intern</h4>
+                <h4>Recruit Nepal</h4>
+                <p>
+                  <li>
+                    Directed a recruitment management CRM project over 6 months,
+                    managing various aspectsfrom initiation to delivery.
+                  </li>
+                  <li>
+                    Utilized Trello for task progress tracking, organizing
+                    workflows, andmanaging team assignments effectively.
+                  </li>
+                </p>
+              </div>
+              <div class="tab-item resume-item">
+                <h4>Feb, 2024 - July, 2024</h4>
+                <h4>Customer Success Representative Intern</h4>
+                <h4>ING Skill Academy</h4>
+                <p>
+                  <li>
+                    Supported customer relationships by addressing inquiries and
+                    assisting with onboarding.
+                  </li>
+                  <li>
+                    Gathered customer feedback and collaborated with the team to
+                    enhance satisfaction and retention.
+                  </li>
+                  <li>Managed and mentored various events.</li>
+                </p>
+              </div>
+              <div class="tab-item resume-item">
+                <h4>Nov, 2023 - Dec, 2023</h4>
+                <h4>Web Development Intern</h4>
+                <h4>CodSoft</h4>
+                <p>
+                  <li>
+                    Developed and maintained dynamic single-page applications
+                    (SPAs) using React.js, improving user experience and
+                    application performance.
+                  </li>
+                  <li>
+                    Created reusable and modular React components, following
+                    best practices and ensuring code maintainability.
+                  </li>
+                </p>
+              </div>
+            </div>
+            <div class="tab-grid resume-box skills">
+              <div class="tab-item resume-item">
+                <i class="bxl bx-react"></i>
+                <p>React.js</p>
+              </div>
+              <div class="tab-item resume-item">
+                <i class="bxl bx-express-js"></i>
+                <p>ExpressJS</p>
+              </div>
+              <div class="tab-item resume-item">
+                <i class="bxl bx-nodejs"></i>
+                <p>Node.js</p>
+              </div>
+              <div class="tab-item resume-item">
+                <i class="bxl bx-javascript"></i>
+                <p>JavaScript</p>
+              </div>
+              <div class="tab-item resume-item">
+                <i class="bxl bx-css3"></i>
+                <p>CSS3</p>
+              </div>
+              <div class="tab-item resume-item">
+                <i class="bxl bx-tailwind-css"></i>
+                <p>Tailwind.css</p>
+              </div>
+              <div class="tab-item resume-item">
+                <i class="bxl bx-bootstrap"></i>
+                <p>Bootstrap</p>
+              </div>
+              <div class="tab-item resume-item">
+                <i class="bxl bx-html5"></i>/>
+                <p>HTML5</p>
+              </div>
+              <div class="tab-item resume-item">
+                <i class="bxl bx-mongodb"></i>
+                <p>MongoDB</p>
+              </div>
+              <div class="tab-item resume-item">
+                <i class="bxl bx-postgresql"></i>
+                <p>PostgreSQL</p>
+              </div>
+            </div>
+            <div class="tab-grid resume-box education">
+              <div class="tab-item resume-item">
+                <h4>2025</h4>
+                <h4>Bsc(Hons) Computing</h4>
+                <h4>Islington College</h4>
+                <p>
+                  <li>
+                    Specialized in software engineering and full-stack web
+                    development.
+                  </li>
+                  <li>
+                    Completed projects using Python, Java, .NET, and RESTful
+                    APIs.
+                  </li>
+                </p>
+              </div>
+              <div class="tab-item resume-item">
+                <h4>Aug, 2023 - Nov, 2023</h4>
+                <h4>Full Stack Web Development - MERN Stack</h4>
+                <h4>Deerwalk Training Center</h4>
+                <p>
+                  <li>
+                    Completed 110-hour training course on the MERN stack
+                    (MongoDB, Express.js, React.js, Node.js), covering
+                    full-stack web development principles and practices.
+                  </li>
+                  <!-- <li>
+                    Gained in-depth knowledge of front-end and back-end
+                    development, including creating dynamic web applications,
+                    RESTful APIs, and handling database operations.
+                  </li> -->
+                </p>
+              </div>
+              <div class="tab-item resume-item">
+                <h4>2022</h4>
+                <h4>Plus 2</h4>
+                <h4>St. Xavier's School</h4>
+                <p>
+                  <li>
+                    Science stream with focus on Mathematics and Computer
+                    Science.
+                  </li>
+                  <li>Active in coding and science exhibitions.</li>
+                </p>
+              </div>
+              <div class="tab-item resume-item">
+                <h4>2020</h4>
+                <h4>SEE</h4>
+                <h4>St. Xavier's School</h4>
+                <p>
+                  <li>
+                    Excelled in core subjects with distinction in Mathematics.
+                  </li>
+                  <li>
+                    Participated in IT clubs and developed an early interest in
+                    programming.
+                  </li>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section class="section portfolio">
+          <h2 class="title">Portfolio</h2>
+          <div class="tab-box">
+            <div class="tab-list portfolio-list active">
+              <h3>My Work</h3>
+            </div>
+            <div class="tab-list portfolio-list">
+              <h3>My Service</h3>
+            </div>
+          </div>
+          <div class="tab-wrapper">
+            <div class="tab-grid portfolio-box work active">
+              <div class="tab-item portfolio-item">
+                <p>work TEST</p>
+              </div>
+            </div>
+            <div class="tab-grid portfolio-box service">
+              <div class="tab-item portfolio-item">
+                <p>service TEST</p>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
-    <!-- Hero -->
 
-    <!-- Outer box with border and padding -->
-    <div class="container my-4 outer-box">
-      <div class="border border-dark p-4">
-        <h1 class="text-center mb-4">Projects</h1>
-        <div class="row gx-5">
-          <div class="col">
-            <div class="border bg-light p-3 h-100">
-              <div
-                class="d-flex flex-column justify-content-center align-items-center"
-              >
-                <img
-                  src="images/landing.png"
-                  alt="Project 1"
-                  class="img-fluid"
-                />
-                <h4 class="mt-2">Landing Page</h4>
-                <p class="text-center">
-                  This is a simple landing page displaying the features and
-                  option to download the app the page is promoting , with proper
-                  sections to make it an user-friendly website.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="border bg-light p-3 h-100">
-              <div
-                class="d-flex flex-column justify-content-center align-items-center"
-              >
-                <img
-                  src="images/tic-tac-toe.png"
-                  alt="Project 2"
-                  class="img-fluid"
-                />
-                <h4 class="mt-2">Tic-tac-toe</h4>
-                <p class="text-center">
-                  The classic tic-tac-toe game created using simple Hooks in
-                  React.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="border bg-light p-3 h-100">
-              <div
-                class="d-flex flex-column justify-content-center align-items-center"
-              >
-                <img
-                  src="images/FoodWebsite.png"
-                  alt="Project 3"
-                  class="img-fluid"
-                />
-                <h4 class="mt-2">FoodWeb</h4>
-                <p class="text-center">
-                  A food website created using MERN stack consisting of
-                  functions like register, login, search, cart functionality,
-                  checkout, etc.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+    <script src="script.js"></script>
   </body>
 </html>
