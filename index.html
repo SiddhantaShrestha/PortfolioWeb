@@ -17,387 +17,980 @@
       href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css"
       rel="stylesheet"
     />
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+        border: none;
+        outline: none;
+        font-family: "Poppins", sans-serif;
+      }
+
+      :root {
+        --nav-bg-color: rgba(255, 255, 255, .1);
+        --bg-color: #171f2b;
+        --second-bg-color: #1f2733;
+        --third-bg-color: #2d3542;
+        --main-color: #0ef;
+        --white-color: #fff;
+        --tab-list-color: #7c8594
+      }
+
+      ::selection {
+        background: var(--main-color);
+        color: var(--bg-color);
+      }
+
+      ::-webkit-scrollbar {
+        width: .5rem;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--main-color);
+        border-radius: 1rem;
+      }
+
+      ::placeholder {
+        color: var(--white-color);
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        color: var(--white-color);
+        background: var(--bg-color);
+        overflow-x: hidden;
+      }
+
+      p {
+        font-size: 1.6rem;
+      }
+
+      /* Navigation Styles */
+      .nav {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40rem;
+        padding: 2rem 0;
+        background: var(--nav-bg-color);
+        border-radius: 5rem;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav .nav-list {
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .nav-list li {
+        position: relative;
+        display: flex;
+        font-size: 3rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .nav-list li:hover,
+      .nav-list li.active {
+        color: var(--main-color);
+      }
+
+      .tooltip {
+        position: absolute;
+        top: -4rem;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: .3rem 1rem;
+        background: var(--main-color);
+        border-radius: .4rem;
+        font-size: 1.6rem;
+        color: var(--bg-color);
+        font-weight: 500;
+        white-space: nowrap;
+        visibility: hidden;
+        opacity: 0;
+        transition: .3s;
+      }
+
+      .nav-list li:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      /* Page Container */
+      .page-container {
+        width: 100vw;
+        min-height: 100vh;
+        position: relative;
+      }
+
+      /* Section/Page Styles */
+      .section {
+        width: 100%;
+        min-height: 100vh;
+        padding: 8rem 10% 2rem;
+        display: none;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+      }
+
+      .section.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section:nth-child(even) {
+        background: var(--second-bg-color);
+      }
+
+      .section:nth-child(odd) {
+        background: var(--bg-color);
+      }
+
+      /* Home Section */
+      .home {
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+        flex-wrap: wrap;
+      }
+
+      .home-info {
+        flex: 1;
+        min-width: 40rem;
+      }
+
+      .home-info h1 {
+        font-size: 5.5rem;
+        color: var(--main-color);
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+
+      .home-info h3 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .desc {
+        margin: 1rem 0 2rem;
+        line-height: 1.6;
+      }
+
+      .home-info .btn-sci {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        padding: 1.2rem 3rem;
+        background: var(--main-color);
+        border-radius: 5rem;
+        box-shadow: 0 0 1rem var(--main-color);
+        font-size: 1.6rem;
+        color: var(--bg-color);
+        font-weight: 600;
+        transition: .3s;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        box-shadow: none;
+      }
+
+      .home-info .btn-sci .sci {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .home-info .btn-sci .sci a {
+        position: relative;
+        display: inline-flex;
+        padding: .8rem;
+        border: .2rem solid var(--main-color);
+        border-radius: 50%;
+        font-size: 2rem;
+        color: var(--main-color);
+        transition: .3s;
+      }
+
+      .home-info .btn-sci .sci a:hover {
+        background: var(--main-color);
+        color: var(--bg-color);
+      }
+
+      .img-wrapper {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 30rem;
+      }
+
+      .img-box {
+        position: relative;
+        width: 30vw;
+        height: 30vw;
+        max-width: 35rem;
+        max-height: 35rem;
+        min-width: 25rem;
+        min-height: 25rem;
+        background: linear-gradient(var(--bg-color), var(--main-color));
+        border-radius: 50%;
+        border: .5rem solid var(--main-color);
+        box-shadow: 0 0 2rem var(--main-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        transition: 1s;
+      }
+
+      .img-box.home-img:hover {
+        box-shadow: 0 0 8rem var(--main-color);
+      }
+
+      .img-box img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .img-box.about-img {
+        background: transparent;
+        box-shadow: 0 0 2rem var(--main-color), inset 0 0 1rem var(--main-color);
+      }
+
+      .img-box.about-img img {
+        z-index: -1;
+      }
+
+      /* About Section */
+      .about {
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+        flex-wrap: wrap;
+      }
+
+      .about-info {
+        flex: 1;
+        min-width: 40rem;
+      }
+
+      .title {
+        font-size: 4rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        color: var(--main-color);
+      }
+
+      .about-info .title {
+        text-align: left;
+      }
+
+      .about-info h3 {
+        font-size: 2.5rem;
+        color: var(--main-color);
+        margin-bottom: 2rem;
+      }
+
+      .about-info .btn {
+        padding: 1.2rem 4rem;
+        margin-top: 2rem;
+      }
+
+      /* Resume Section */
+      .resume {
+        padding-bottom: 5rem;
+      }
+
+      .tab-box {
+        display: flex;
+        width: 100%;
+        height: 5rem;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        gap: 2rem;
+      }
+
+      .tab-list {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        justify-content: center;
+        border-bottom: .3rem solid var(--tab-list-color);
+        cursor: pointer;
+        color: var(--tab-list-color);
+        transition: .5s;
+      }
+
+      .tab-list.active {
+        border-color: var(--main-color);
+        color: var(--main-color);
+      }
+
+      .tab-list h3 {
+        font-size: 2.5rem;
+      }
+
+      .tab-wrapper {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 40rem;
+      }
+
+      .tab-grid {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+        gap: 2rem;
+        overflow-y: auto;
+        overflow-x: hidden;
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(.8);
+        transition: all 0.5s ease;
+      }
+
+      .tab-grid.active {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .tab-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: var(--third-bg-color);
+        border-radius: .8rem;
+        padding: 2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .tab-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .tab-item h4 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .tab-item p {
+        font-size: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .tab-item li {
+        position: relative;
+        padding-left: 2rem;
+        margin-top: 0.8rem;
+        font-size: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .tab-item li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0.6rem;
+        height: 0.6rem;
+        background: var(--main-color);
+        border-radius: 50%;
+      }
+
+      .resume-item h4:nth-child(1) {
+        font-size: 1.7rem;
+        color: var(--main-color);
+        font-weight: 400;
+      }
+
+      .resume-item h4:nth-child(3) {
+        position: relative;
+        color: var(--white-color);
+        margin-left: 2rem;
+        font-size: 1.7rem;
+      }
+
+      .resume-item h4:nth-child(3)::before {
+        content: "";
+        position: absolute;
+        left: -2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1rem;
+        height: 1rem;
+        background: var(--main-color);
+        border-radius: 50%;
+      }
+
+      .resume-box.skills {
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      }
+
+      .resume-box.skills .resume-item {
+        align-items: center;
+        text-align: center;
+      }
+
+      .resume-box.skills .resume-item i {
+        font-size: 8rem;
+        transition: color 0.5s ease;
+      }
+
+      .resume-box.skills .resume-item:hover i {
+        color: var(--main-color);
+      }
+
+      .resume-box.skills .resume-item p {
+        margin-top: 1rem;
+      }
+
+      /* Portfolio Section */
+      .portfolio {
+        padding-bottom: 5rem;
+      }
+
+      .portfolio-box.work .portfolio-item {
+        position: relative;
+        height: 25rem;
+        overflow: hidden;
+        border-radius: .8rem;
+        cursor: pointer;
+      }
+
+      .portfolio-box.work .portfolio-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--third-bg-color);
+        border-radius: .8rem;
+        z-index: 1;
+        opacity: 0;
+        transition: .3s;
+      }
+
+      .portfolio-box.work .portfolio-item:hover::before {
+        opacity: .9;
+      }
+
+      .portfolio-item .work-img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: .8rem;
+        overflow: hidden;
+      }
+
+      .portfolio-item .work-img img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: .3s;
+      }
+
+      .portfolio-item:hover .work-img img {
+        transform: scale(1.2);
+      }
+
+      .portfolio-item .work-info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        text-align: center;
+        padding: 2rem;
+        visibility: hidden;
+        opacity: 0;
+        transition: .3s;
+      }
+
+      .portfolio-item:hover .work-info {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .portfolio-item .work-info h4 {
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+
+      .portfolio-item .work-info .tech-used {
+        color: var(--main-color);
+        border-bottom: .1rem solid var(--white-color);
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .portfolio-item .work-icon {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .portfolio-item .work-icon a {
+        position: relative;
+        display: inline-flex;
+        padding: 1rem;
+        background: var(--white-color);
+        border-radius: 50%;
+        font-size: 2.5rem;
+        color: var(--bg-color);
+        transition: 0.3s;
+      }
+
+      .portfolio-item .work-icon a:hover {
+        background: var(--main-color);
+      }
+
+      .portfolio-item .service-icon {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .portfolio-item .service-icon .icon {
+        font-size: 5rem;
+        margin-left: -.3rem;
+        transition: .3s;
+      }
+
+      .portfolio-item:hover .service-icon .icon {
+        color: var(--main-color);
+      }
+
+      .portfolio-item .service-icon a {
+        background: var(--main-color);
+        color: var(--bg-color);
+      }
+
+      .portfolio-item .service-icon a i {
+        transform: rotate(-135deg);
+        transition: .3s;
+      }
+
+      .portfolio-item .service-icon a:hover i {
+        transform: rotate(-180deg);
+      }
+
+      .portfolio-box.service .portfolio-item {
+        transition: .3s;
+      }
+
+      .portfolio-box.service .portfolio-item:hover h4 {
+        color: var(--main-color);
+      }
+
+      /* Contact Section */
+      .contact {
+        padding-bottom: 5rem;
+      }
+
+      .contact-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 60vh;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 70rem;
+      }
+
+      .contact-form h3 {
+        font-size: 3rem;
+        color: var(--main-color);
+        margin-bottom: 3rem;
+      }
+
+      .contact-form .field-box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        width: 100%;
+      }
+
+      .contact-form .field-box input,
+      .contact-form .field-box textarea {
+        flex: 1 1 30rem;
+        padding: 2rem;
+        background: var(--third-bg-color);
+        border-radius: .6rem;
+        font-size: 1.6rem;
+        color: var(--white-color);
+        border: 2px solid transparent;
+        transition: border-color 0.3s ease;
+      }
+
+      .contact-form .field-box input:focus,
+      .contact-form .field-box textarea:focus {
+        border-color: var(--main-color);
+      }
+
+      .contact-form .field-box textarea {
+        height: 20rem;
+        resize: none;
+        min-width: 100%;
+      }
+
+      .contact-form .contact-btn {
+        margin-top: 3rem;
+      }
+
+      .contact-form .contact-btn .btn {
+        cursor: pointer;
+        padding: 1.5rem 4rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav {
+          width: 35rem;
+        }
+
+        .section {
+          padding: 8rem 5% 2rem;
+        }
+
+        .home,
+        .about {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .home-info,
+        .about-info {
+          min-width: auto;
+        }
+
+        .home-info h1 {
+          font-size: 4rem;
+        }
+
+        .title {
+          font-size: 3rem;
+        }
+
+        .tab-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .tab-box {
+          flex-direction: column;
+          height: auto;
+          gap: 1rem;
+        }
+
+        .tab-list {
+          border-bottom: .2rem solid var(--tab-list-color);
+          padding: 1rem;
+        }
+
+        .img-box {
+          width: 25rem;
+          height: 25rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav {
+          width: 30rem;
+        }
+
+        .nav-list li {
+          font-size: 2.5rem;
+        }
+
+        .home-info h1 {
+          font-size: 3.5rem;
+        }
+
+        .home-info h3 {
+          font-size: 2.5rem;
+        }
+
+        .title {
+          font-size: 2.5rem;
+        }
+
+        .contact-form .field-box input,
+        .contact-form .field-box textarea {
+          flex: 1 1 100%;
+        }
+      }
+    </style>
   </head>
-  <script src="script.js"></script>
 
   <body>
     <!-- Navbar -->
     <nav class="nav">
       <ul class="nav-list">
-        <li class="active">
+        <li class="active" data-section="home">
           <i class="bx bx-home-alt"></i>
           <span class="tooltip">Home</span>
         </li>
-        <li>
+        <li data-section="about">
           <i class="bx bx-user"></i>
           <span class="tooltip">About</span>
         </li>
-        <li>
+        <li data-section="resume">
           <i class="bx bx-file-detail"></i>
           <span class="tooltip">Resume</span>
         </li>
-        <li>
+        <li data-section="portfolio">
           <i class="bx bx-briefcase-alt-2"></i>
           <span class="tooltip">Portfolio</span>
         </li>
-        <li>
+        <li data-section="contact">
           <i class="bx bx-envelope"></i>
           <span class="tooltip">Contact</span>
         </li>
       </ul>
     </nav>
 
-    <div class="container">
-      <div class="box">
-        <!-- Home -->
-        <section class="section home">
-          <div class="home-info">
-            <h3>Hello I'm</h3>
-            <h1>Siddhanta Shrestha</h1>
-            <h3>Full Stack Developer</h3>
-            <p class="desc">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Accusamus ipsum deleniti nisi qui, iusto quod tenetur, perferendis
-              aspernatur suscipit cupiditate assumenda cum unde minus.
-              Perferendis!
-            </p>
-            <div class="btn-sci">
-              <a href="#" class="btn">Download CV</a>
-              <div class="sci">
-                <a href="#">
-                  <i class="bxl bx-github"></i>
-                  <span class="tooltip">Github</span>
-                </a>
-                <a href="#">
-                  <i class="bxl bx-linkedin"></i>
-                  <span class="tooltip">LinkedIn</span>
-                </a>
-                <a href="#">
-                  <i class="bxl bx-twitter"></i>
-                  <span class="tooltip">Twitter</span>
-                </a>
-                <a href="#">
-                  <i class="bxl bx-facebook"></i>
-                  <span class="tooltip">Facebook</span>
-                </a>
-              </div>
+    <div class="page-container">
+      <!-- Home Section -->
+      <section class="section home active" id="home">
+        <div class="home-info">
+          <h3>Hello I'm</h3>
+          <h1>Siddhanta Shrestha</h1>
+          <h3>Full Stack Developer</h3>
+          <p class="desc">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Accusamus ipsum deleniti nisi qui, iusto quod tenetur, perferendis
+            aspernatur suscipit cupiditate assumenda cum unde minus.
+            Perferendis!
+          </p>
+          <div class="btn-sci">
+            <a href="#" class="btn">Download CV</a>
+            <div class="sci">
+              <a href="#">
+                <i class="bxl bx-github"></i>
+                <span class="tooltip">Github</span>
+              </a>
+              <a href="#">
+                <i class="bxl bx-linkedin"></i>
+                <span class="tooltip">LinkedIn</span>
+              </a>
+              <a href="#">
+                <i class="bxl bx-twitter"></i>
+                <span class="tooltip">Twitter</span>
+              </a>
+              <a href="#">
+                <i class="bxl bx-facebook"></i>
+                <span class="tooltip">Facebook</span>
+              </a>
             </div>
           </div>
+        </div>
 
-          <div class="img-wrapper">
-            <div class="img-box home-img">
-              <img src="images/me.png" alt="Siddhanta Shrestha" />
-            </div>
+        <div class="img-wrapper">
+          <div class="img-box home-img">
+            <img src="images/me.png" alt="Siddhanta Shrestha" />
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- about section -->
-        <section class="section about">
-          <div class="img-wrapper">
-            <div class="img-box about-img">
-              <img src="images/me.png" alt="Siddhanta Shrestha" />
-            </div>
+      <!-- About Section -->
+      <section class="section about" id="about">
+        <div class="img-wrapper">
+          <div class="img-box about-img">
+            <img src="images/me.png" alt="Siddhanta Shrestha" />
           </div>
+        </div>
 
-          <div class="about-info">
-            <h2 class="title">About Me</h2>
-            <h3>Full Stack Developer!</h3>
-            <p class="desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-              ipsum! Voluptates aspernatur dolorem aut cumque repellat eos
-              voluptate inventore dolor ullam repellendus nemo neque provident
-              hic odit mollitia, itaque perferendis minima id similique
-              accusamus ratione? Accusamus ipsam placeat numquam unde quod
-              sapiente delectus quos a harum obcaecati non, quisquam dolores.
-            </p>
-            <a href="#" class="btn">View More</a>
-          </div>
-        </section>
+        <div class="about-info">
+          <h2 class="title">About Me</h2>
+          <h3>Full Stack Developer!</h3>
+          <p class="desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
+            ipsum! Voluptates aspernatur dolorem aut cumque repellat eos
+            voluptate inventore dolor ullam repellendus nemo neque provident
+            hic odit mollitia, itaque perferendis minima id similique
+            accusamus ratione? Accusamus ipsam placeat numquam unde quod
+            sapiente delectus quos a harum obcaecati non, quisquam dolores.
+          </p>
+          <a href="#" class="btn">View More</a>
+        </div>
+      </section>
 
-        <!-- resume -->
-        <section class="section resume">
-          <h2 class="title">Resume</h2>
-          <div class="tab-box">
-            <div class="tab-list resume-list active">
-              <h3>Experience</h3>
+      <!-- Resume Section -->
+      <section class="section resume" id="resume">
+        <h2 class="title">Resume</h2>
+        <div class="tab-box">
+          <div class="tab-list resume-list active">
+            <h3>Experience</h3>
+          </div>
+          <div class="tab-list resume-list">
+            <h3>Skills</h3>
+          </div>
+          <div class="tab-list resume-list">
+            <h3>Education</h3>
+          </div>
+        </div>
+        <div class="tab-wrapper">
+          <div class="tab-grid resume-box experience active">
+            <div class="tab-item resume-item">
+              <h4>June, 2025 - Present</h4>
+              <h4>Junior Full Stack Developer</h4>
+              <h4>Recruit Nepal</h4>
+              <p>
+                <li>Designed and developed responsive frontend interfaces using React and Tailwind CSS.</li>
+                <li>Integrated RESTful backend APIs and implemented user-facing features across full-stack.</li>
+                <li>Assisted with basic deployment tasks including hosting, domain setup, and configuration.</li>
+              </p>
             </div>
-            <div class="tab-list resume-list">
-              <h3>Skills</h3>
+            <div class="tab-item resume-item">
+              <h4>Aug, 2024 - Jan, 2025</h4>
+              <h4>Project Management and Tech Support Intern</h4>
+              <h4>Recruit Nepal</h4>
+              <p>
+                <li>Directed a recruitment management CRM project over 6 months, managing various aspects from initiation to delivery.</li>
+                <li>Utilized Trello for task progress tracking, organizing workflows, and managing team assignments effectively.</li>
+              </p>
             </div>
-            <div class="tab-list resume-list">
-              <h3>Education & Training</h3>
+            <div class="tab-item resume-item">
+              <h4>Feb, 2024 - July, 2024</h4>
+              <h4>Customer Success Representative Intern</h4>
+              <h4>ING Skill Academy</h4>
+              <p>
+                <li>Supported customer relationships by addressing inquiries and assisting with onboarding.</li>
+                <li>Gathered customer feedback and collaborated with the team to enhance satisfaction and retention.</li>
+                <li>Managed and mentored various events.</li>
+              </p>
             </div>
           </div>
-          <div class="tab-wrapper">
-            <div class="tab-grid resume-box experience active">
-              <div class="tab-item resume-item">
-                <h4>June, 2025 - Present</h4>
-                <h4>Junior Full Stack Developer</h4>
-                <h4>Recruit Nepal</h4>
-                <p>
-                  <li>
-                    Designed and developed responsive frontend interfaces using
-                    React and Tailwind CSS.
-                  </li>
-                  <li>
-                    Integrated RESTful backend APIs and implemented user-facing
-                    features across full-stack.
-                  </li>
-                  <li>
-                    Assisted with basic deployment tasks including hosting,
-                    domain setup, and configuration.
-                  </li>
-                </p>
-              </div>
-              <div class="tab-item resume-item">
-                <h4>Aug, 2024 - Jan, 2025</h4>
-                <h4>Project Management and Tech Support Intern</h4>
-                <h4>Recruit Nepal</h4>
-                <p>
-                  <li>
-                    Directed a recruitment management CRM project over 6 months,
-                    managing various aspectsfrom initiation to delivery.
-                  </li>
-                  <li>
-                    Utilized Trello for task progress tracking, organizing
-                    workflows, andmanaging team assignments effectively.
-                  </li>
-                </p>
-              </div>
-              <div class="tab-item resume-item">
-                <h4>Feb, 2024 - July, 2024</h4>
-                <h4>Customer Success Representative Intern</h4>
-                <h4>ING Skill Academy</h4>
-                <p>
-                  <li>
-                    Supported customer relationships by addressing inquiries and
-                    assisting with onboarding.
-                  </li>
-                  <li>
-                    Gathered customer feedback and collaborated with the team to
-                    enhance satisfaction and retention.
-                  </li>
-                  <li>Managed and mentored various events.</li>
-                </p>
-              </div>
-              <div class="tab-item resume-item">
-                <h4>Nov, 2023 - Dec, 2023</h4>
-                <h4>Web Development Intern</h4>
-                <h4>CodSoft</h4>
-                <p>
-                  <li>
-                    Developed and maintained dynamic single-page applications
-                    (SPAs) using React.js, improving user experience and
-                    application performance.
-                  </li>
-                  <li>
-                    Created reusable and modular React components, following
-                    best practices and ensuring code maintainability.
-                  </li>
-                </p>
-              </div>
+          <div class="tab-grid resume-box skills">
+            <div class="tab-item resume-item">
+              <i class="bxl bx-react"></i>
+              <p>React.js</p>
             </div>
-            <div class="tab-grid resume-box skills">
-              <div class="tab-item resume-item">
-                <i class="bxl bx-react"></i>
-                <p>React.js</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bxl bx-express-js"></i>
-                <p>ExpressJS</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bxl bx-nodejs"></i>
-                <p>Node.js</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bxl bx-javascript"></i>
-                <p>JavaScript</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bxl bx-css3"></i>
-                <p>CSS3</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bxl bx-tailwind-css"></i>
-                <p>Tailwind.css</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bxl bx-bootstrap"></i>
-                <p>Bootstrap</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bxl bx-html5"></i>/>
-                <p>HTML5</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bxl bx-mongodb"></i>
-                <p>MongoDB</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bxl bx-postgresql"></i>
-                <p>PostgreSQL</p>
-              </div>
+            <div class="tab-item resume-item">
+              <i class="bxl bx-nodejs"></i>
+              <p>Node.js</p>
             </div>
-            <div class="tab-grid resume-box education">
-              <div class="tab-item resume-item">
-                <h4>2025</h4>
-                <h4>Bsc(Hons) Computing</h4>
-                <h4>Islington College</h4>
-                <p>
-                  <li>
-                    Specialized in software engineering and full-stack web
-                    development.
-                  </li>
-                  <li>
-                    Completed projects using Python, Java, .NET, and RESTful
-                    APIs.
-                  </li>
-                </p>
-              </div>
-              <div class="tab-item resume-item">
-                <h4>Aug, 2023 - Nov, 2023</h4>
-                <h4>Full Stack Web Development - MERN Stack</h4>
-                <h4>Deerwalk Training Center</h4>
-                <p>
-                  <li>
-                    Completed 110-hour training course on the MERN stack
-                    (MongoDB, Express.js, React.js, Node.js), covering
-                    full-stack web development principles and practices.
-                  </li>
-                  <!-- <li>
-                    Gained in-depth knowledge of front-end and back-end
-                    development, including creating dynamic web applications,
-                    RESTful APIs, and handling database operations.
-                  </li> -->
-                </p>
-              </div>
-              <div class="tab-item resume-item">
-                <h4>2022</h4>
-                <h4>Plus 2</h4>
-                <h4>St. Xavier's School</h4>
-                <p>
-                  <li>
-                    Science stream with focus on Mathematics and Computer
-                    Science.
-                  </li>
-                  <li>Active in coding and science exhibitions.</li>
-                </p>
-              </div>
-              <div class="tab-item resume-item">
-                <h4>2020</h4>
-                <h4>SEE</h4>
-                <h4>St. Xavier's School</h4>
-                <p>
-                  <li>
-                    Excelled in core subjects with distinction in Mathematics.
-                  </li>
-                  <li>
-                    Participated in IT clubs and developed an early interest in
-                    programming.
-                  </li>
-                </p>
-              </div>
+            <div class="tab-item resume-item">
+              <i class="bxl bx-javascript"></i>
+              <p>JavaScript</p>
+            </div>
+            <div class="tab-item resume-item">
+              <i class="bxl bx-css3"></i>
+              <p>CSS3</p>
+            </div>
+            <div class="tab-item resume-item">
+              <i class="bxl bx-html5"></i>
+              <p>HTML5</p>
+            </div>
+            <div class="tab-item resume-item">
+              <i class="bxl bx-mongodb"></i>
+              <p>MongoDB</p>
             </div>
           </div>
-        </section>
+          <div class="tab-grid resume-box education">
+            <div class="tab-item resume-item">
+              <h4>2025</h4>
+              <h4>Bsc(Hons) Computing</h4>
+              <h4>Islington College</h4>
+              <p>
+                <li>Specialized in software engineering and full-stack web development.</li>
+                <li>Completed projects using Python, Java, .NET, and RESTful APIs.</li>
+              </p>
+            </div>
+            <div class="tab-item resume-item">
+              <h4>Aug, 2023 - Nov, 2023</h4>
+              <h4>Full Stack Web Development - MERN Stack</h4>
+              <h4>Deerwalk Training Center</h4>
+              <p>
+                <li>Completed 110-hour training course on the MERN stack covering full-stack web development principles.</li>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- Portfolio -->
-        <section class="section portfolio">
-          <h2 class="title">Portfolio</h2>
-          <div class="tab-box">
-            <div class="tab-list portfolio-list active">
-              <h3>My Work</h3>
-            </div>
-            <div class="tab-list portfolio-list">
-              <h3>My Service</h3>
-            </div>
+      <!-- Portfolio Section -->
+      <section class="section portfolio" id="portfolio">
+        <h2 class="title">Portfolio</h2>
+        <div class="tab-box">
+          <div class="tab-list portfolio-list active">
+            <h3>My Work</h3>
           </div>
-          <div class="tab-wrapper">
-            <div class="tab-grid portfolio-box work active">
-              <!-- First work -->
-              <div class="tab-item portfolio-item">
-                <div class="work-img">
-                  <img src="images/RecipeNest.png" alt="" />
+          <div class="tab-list portfolio-list">
+            <h3>My Service</h3>
+          </div>
+        </div>
+        <div class="tab-wrapper">
+          <div class="tab-grid portfolio-box work active">
+            <div class="tab-item portfolio-item">
+              <div class="work-img">
+                <img src="images/recipenest1.png" alt="Recipe App" />
+              </div>
+              <div class="work-info">
+                <h4>Full Stack Project</h4>
+                <p>Developed a full-stack recipe website using the MERN stack with personalized recommendations.</p>
+                <div class="tech-used">
+                  <p>React.js, Express.js, Node.js, MongoDB, TailwindCSS</p>
                 </div>
-                <div class="work-info">
-                  <h4>Full Stack project</h4>
-                  <p>
-                    Developed a full-stack recipe website using the MERN stack
-                    with personalized recipe recommendations, advanced search
-                    filters, and curated Nepali/international dishes.
-                  </p>
-                  <div class="tech-used">
-                    <p>React.js, Express.js, Node.js, MongoDB, TailwindCSS</p>
-                  </div>
-                  <div class="portfolio-icon work-icon">
-                    <a href="#">
-                      <i class="bx bx-arrow-up-right-stroke"></i>
-                      <span class="tooltip">Preview</span>
-                    </a>
-                    <a href="#">
-                      <i class="bxl bx-github"></i>
-                      <span class="tooltip">Github Repository</span>
-                    </a>
-                  </div>
+                <div class="work-icon">
+                  <a href="#"><i class="bx bx-link-external"></i></a>
+                  <a href="#"><i class="bxl bx-github"></i></a>
                 </div>
               </div>
-
-              <!-- Second work -->
-              <div class="tab-item portfolio-item">
-                <div class="work-img">
-                  <img src="images/food.png" alt="" />
+            </div>
+            <div class="tab-item portfolio-item">
+              <div class="work-img">
+                <img src="images/food.png" alt="Food App" />
+              </div>
+              <div class="work-info">
+                <h4>Full Stack Project</h4>
+                <p>Comprehensive food ordering website using the MERN stack for online food delivery.</p>
+                <div class="tech-used">
+                  <p>React.js, Express.js, Node.js, MongoDB, TailwindCSS</p>
                 </div>
-                <div class="work-info">
-                  <h4>Full Stack project</h4>
-                  <p>
-                    Developed a comprehensive food ordering website using the
-                    MERN stack (MongoDB, Express.js, React.js, Node.js) to
-                    facilitate online food ordering and delivery. Utilized
-                    React.js to segregate web-app into components
-                  </p>
-                  <div class="tech-used">
-                    <p>React.js, Express.js, Node.js, MongoDB, TailwindCSS</p>
-                  </div>
-                  <div class="portfolio-icon work-icon">
-                    <a href="#">
-                      <i class="bx bx-arrow-up-right-stroke"></i>
-                      <span class="tooltip">Preview</span>
-                    </a>
-                    <a href="#">
-                      <i class="bxl bx-github"></i>
-                      <span class="tooltip">Github Repository</span>
-                    </a>
-                  </div>
+                <div class="work-icon">
+                  <a href="#"><i class="bx bx-link-external"></i></a>
+                  <a href="#"><i class="bxl bx-github"></i></a>
                 </div>
               </div>
-
-              <!-- Third work -->
-              <div class="tab-item portfolio-item">
-                <div class="work-img">
-                  <img src="images/tictac.png" alt="" />
-                </div>
-                <div class="work-info">
-                  <h4>Frontend Project</h4>
-                  <p>
-                    Developed an interactive Tic-Tac-Toe game using React.js,
-                    providing a fun and engaging experience for users to play
-                    the classic game.
-                  </p>
-                  <div class="tech-used">
-                    <p>React.js, CSS5</p>
-                  </div>
-                  <div class="portfolio-icon work-icon">
-                    <a href="#">
-                      <i class="bx bx-arrow-up-right-stroke"></i>
-                      <span class="tooltip">Preview</span>
-                    </a>
-                    <a href="#">
-                      <i class="bxl bx-github"></i>
-                      <span class="tooltip">Github Repository</span>
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -475,37 +1068,34 @@
                   optimization.
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
+           </div>
+      </div>
+    </section>
+
 
         <!-- Contact section -->
-        <section class="section contact">
-          <h2 class="title">Contact</h2>
-          <div class="contact-wrapper">
-            <form action="" class="contact-form">
-              <h3>Let's Work Together!</h3>
-              <div class="field-box">
-                <input type="text" placeholder="Full Name" required />
-                <input type="email" placeholder="Email Address" required />
-                <input type="text" placeholder="Phone Number" required />
-                <input type="text" placeholder="Email Subject" required />
-                <textarea
-                  name=""
-                  id=""
-                  placeholder="Your Message"
-                  required
-                ></textarea>
-              </div>
-              <div class="contact-btn">
-                <button type="submit" class="btn">Send Message</button>
-              </div>
-            </form>
-          </div>
-        </section>
+<section class="section contact" id="contact">
+  <h2 class="title">Contact</h2>
+  <div class="contact-wrapper">
+    <form action="" class="contact-form">
+      <h3>Let's Work Together!</h3>
+      <div class="field-box">
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="text" placeholder="Phone Number" required />
+        <input type="text" placeholder="Email Subject" required />
+        <textarea placeholder="Your Message" required></textarea>
+      </div>
+      <div class="contact-btn">
+        <button type="submit" class="btn">Send Message</button>
+      </div>
+    </form>
+  </div>
+</section>
+
       </div>
     </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
-
-<!-- deploy issue -->
