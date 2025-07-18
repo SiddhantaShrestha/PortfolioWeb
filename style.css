@@ -148,6 +148,7 @@ a:hover .tooltip,
 }
 
 .section.contact{
+    transform: translateX(0) translateZ(0) rotateY(-360deg);
   visibility: hidden;
 }
 
